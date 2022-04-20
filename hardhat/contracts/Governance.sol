@@ -47,6 +47,11 @@ contract Governance {
         _;
     }
 
+    modifier canChangeResultStatus (){
+        require(shareholders[msg.sender] == CHAIRMAN_ROLE || shareholders[msg.sender] == TEACHER_ROLE, "Only account with CHAIRMAN_ROLE can change voting allowed");
+        _;
+    }
+
     modifier canViewResult () {
         if (shareholders[msg.sender] == STUDENT_ROLE) {
             require(resultPublic == true, "Result not yet public");
@@ -82,5 +87,9 @@ contract Governance {
 
     function votingResult () public view canViewResult returns (candidate[] memory) {
         return candidates;
+    }
+
+    function changeResultStatus (bool status) public canChangeResultStatus {
+        resultPublic = status;
     }
 }
