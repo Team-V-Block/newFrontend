@@ -6,6 +6,8 @@ contract Governance {
     bytes32 public constant STUDENT_ROLE = keccak256("STUDENT_ROLE");
     bytes32 public constant TEACHER_ROLE = keccak256("TEACHER_ROLE");
     bytes32 public constant CHAIRMAN_ROLE = keccak256("CHAIRMAN_ROLE");
+
+    bool public votingAllowed = true;
     
     struct candidate {
         string name;   // short name (up to 32 bytes)
@@ -39,6 +41,11 @@ contract Governance {
         _;
     }
 
+    modifier canChangeVotingAllowed (){
+        require(shareholders[msg.sender] == CHAIRMAN_ROLE, "Only account with CHAIRMAN_ROLE can change voting allowed");
+        _;
+    }
+
     constructor (){
         //Grant chairman role to the contract deployer
        grantRole(CHAIRMAN_ROLE, msg.sender);
@@ -59,5 +66,9 @@ contract Governance {
 
     function getRole (address account) public view returns (bytes32) {
         return shareholders[account];
+    }
+
+    function changevotingAllowed (bool status) public canChangeVotingAllowed {
+        votingAllowed = status;
     }
 }
