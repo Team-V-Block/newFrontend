@@ -92,4 +92,14 @@ contract Governance {
     function changeResultStatus (bool status) public canChangeResultStatus {
         resultPublic = status;
     }
+
+    function getWinner () public view canViewResult returns (candidate memory) {
+        uint256 winnerIndex = 0;
+        for (uint256 i=0; i<candidates.length; i++) {
+            if (winnerIndex < candidates[i].voteCount) {
+                winnerIndex = i;
+            }
+        }
+        return candidates[winnerIndex];
+    }
 }
