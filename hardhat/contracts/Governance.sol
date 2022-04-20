@@ -8,6 +8,7 @@ contract Governance {
     bytes32 public constant CHAIRMAN_ROLE = keccak256("CHAIRMAN_ROLE");
 
     bool public votingAllowed = true;
+    bool public resultPublic = false;
     
     struct candidate {
         string name;   // short name (up to 32 bytes)
@@ -46,6 +47,13 @@ contract Governance {
         _;
     }
 
+    modifier canViewResult () {
+        if (shareholders[msg.sender] == STUDENT_ROLE) {
+            require(resultPublic == true, "Result not yet public");
+        }
+        _;
+    }
+
     constructor (){
         //Grant chairman role to the contract deployer
        grantRole(CHAIRMAN_ROLE, msg.sender);
@@ -70,5 +78,9 @@ contract Governance {
 
     function changevotingAllowed (bool status) public canChangeVotingAllowed {
         votingAllowed = status;
+    }
+
+    function votingResult () public view canViewResult returns (candidate[] memory) {
+        return candidates;
     }
 }
