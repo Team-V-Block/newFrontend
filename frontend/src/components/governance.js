@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ABI from "../ABI/Governance.json";
 import { ethers } from "ethers";
 import "./governance.css";
+import { BigNumber } from "ethers";
 
 class Vote extends Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class Vote extends Component {
     const balance = await provider.getBalance(accounts[0]);
     const addressBalance = ethers.utils.formatEther(balance);
 
+    ////////************************READ FUNCTION */
     const voteContract = new ethers.Contract(
       "0x64bC644e2225D7e6B75A8543221556e0E1A5a955",
       ABI.abi,
@@ -24,10 +26,10 @@ class Vote extends Component {
     const Chairman = await voteContract.CHAIRMAN_ROLE();
     const Student = await voteContract.STUDENT_ROLE();
     const Teacher = await voteContract.TEACHER_ROLE();
+
     const returnChairman = Chairman;
     const returnStudent = Student;
     const returnTeacher = Teacher;
-
     this.setState({
       selectedAddress: accounts[0],
       balance: addressBalance,
@@ -36,6 +38,19 @@ class Vote extends Component {
       Teacher: returnTeacher,
     });
   }
+  async Result() {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const voteContract = new ethers.Contract(
+      "0x64bC644e2225D7e6B75A8543221556e0E1A5a955",
+      ABI.abi,
+      provider
+    );
+    const Result = await voteContract.votingResult();
+
+    this.setState({ Result });
+  }
+
+  //*********************************WRITE FUNCTIONS */
 
   // grantRole
   async grant() {
@@ -54,7 +69,35 @@ class Vote extends Component {
 
     this.setState({ byte });
   }
+  //changeResultStatus
+  async changeResultof() {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
 
+    const voteContract = new ethers.Contract(
+      "0x64bC644e2225D7e6B75A8543221556e0E1A5a955",
+      ABI.abi,
+      signer
+    );
+    const change = await voteContract.changeResultStatus(true);
+
+    this.setState({ change });
+  }
+
+  // vote
+  async voteCandidate() {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+
+    const voteContract = new ethers.Contract(
+      "0x64bC644e2225D7e6B75A8543221556e0E1A5a955",
+      ABI.abi,
+      signer
+    );
+    const votecand = await voteContract.vote(BigNumber.from("2"));
+    this.setState({ votecand });
+    console.log(votecand);
+  }
   // addCandidates
   async addCandidates() {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -70,8 +113,9 @@ class Vote extends Component {
     this.setState({ add });
   }
 
-  // vote
-  async voteCandidate() {
+  //changeVotingAllowed
+
+  async changeVoting() {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
 
@@ -80,9 +124,9 @@ class Vote extends Component {
       ABI.abi,
       signer
     );
-    const vote = await voteContract.vote(["3"]);
-    this.setState({ vote });
-    console.log(vote);
+    const voting = await voteContract.changeVotingAllowed(false);
+
+    this.setState({ voting });
   }
 
   renderMetamask() {
@@ -132,6 +176,18 @@ class Vote extends Component {
                 onClick={() => this.voteCandidate}
               >
                 Vote Candidates
+              </button>
+              <button
+                className="btn btn-changeStatus"
+                onClick={() => this.changeResultof()}
+              >
+                changeResultStatus
+              </button>
+              <button
+                className="btn btn-changeVoting"
+                onClick={() => this.changeVoting()}
+              >
+                ChangeVotingAllowed
               </button>
             </div>
           </div>
