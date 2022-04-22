@@ -1,0 +1,845 @@
+{
+  "version": "3.2",
+  "log": [
+    {
+      "Governance": {
+        "src": "contracts/Governance.sol:4",
+        "version": {
+          "withMetadata": "7b53e2f04f5a165e40d7f6b5890802e8a713dcc54b8ce7d9da6d8a099ce2fef6",
+          "withoutMetadata": "c374598cb55631d058c0edc590a11929904c6fb61d40a9e6e5cd8dd32ca75e12",
+          "linkedWithoutMetadata": "c374598cb55631d058c0edc590a11929904c6fb61d40a9e6e5cd8dd32ca75e12"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "()",
+          "grantRole(bytes32,address)",
+          "vote(uint256)",
+          "getRole(address)",
+          "changeVotingAllowed(bool)",
+          "votingResult()",
+          "changeResultStatus(bool)",
+          "addCandidates(string[])"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "Governance",
+            "src": "contracts/Governance.sol:94"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "votingAllowed",
+            "src": "contracts/Governance.sol:11"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "resultPublic",
+            "src": "contracts/Governance.sol:12"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "label": "votingAllowed",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Governance",
+              "src": "contracts/Governance.sol:11"
+            },
+            {
+              "label": "resultPublic",
+              "offset": 1,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Governance",
+              "src": "contracts/Governance.sol:12"
+            },
+            {
+              "label": "candidates",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_array(t_struct(candidate)39_storage)dyn_storage",
+              "contract": "Governance",
+              "src": "contracts/Governance.sol:32"
+            },
+            {
+              "label": "shareholderArray",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_array(t_address)dyn_storage",
+              "contract": "Governance",
+              "src": "contracts/Governance.sol:35"
+            },
+            {
+              "label": "shareholders",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_mapping(t_address,t_bytes32)",
+              "contract": "Governance",
+              "src": "contracts/Governance.sol:38"
+            },
+            {
+              "label": "voters",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_mapping(t_address,t_struct(voter)44_storage)",
+              "contract": "Governance",
+              "src": "contracts/Governance.sol:41"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_array(t_address)dyn_storage": {
+              "label": "address[]",
+              "numberOfBytes": "32"
+            },
+            "t_array(t_struct(candidate)39_storage)dyn_storage": {
+              "label": "struct Governance.candidate[]",
+              "numberOfBytes": "32"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_bytes32": {
+              "label": "bytes32",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_bytes32)": {
+              "label": "mapping(address => bytes32)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_struct(voter)44_storage)": {
+              "label": "mapping(address => struct Governance.voter)",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_struct(candidate)39_storage": {
+              "label": "struct Governance.candidate",
+              "members": [
+                {
+                  "label": "name",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "voteCount",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "1"
+                }
+              ],
+              "numberOfBytes": "64"
+            },
+            "t_struct(voter)44_storage": {
+              "label": "struct Governance.voter",
+              "members": [
+                {
+                  "label": "voted",
+                  "type": "t_bool",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "vote",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "1"
+                }
+              ],
+              "numberOfBytes": "64"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            }
+          },
+          "layoutVersion": "1.1",
+          "flat": true
+        }
+      }
+    },
+    {
+      "Governance": {
+        "src": "contracts/Governance.sol:4",
+        "version": {
+          "withMetadata": "7b53e2f04f5a165e40d7f6b5890802e8a713dcc54b8ce7d9da6d8a099ce2fef6",
+          "withoutMetadata": "c374598cb55631d058c0edc590a11929904c6fb61d40a9e6e5cd8dd32ca75e12",
+          "linkedWithoutMetadata": "c374598cb55631d058c0edc590a11929904c6fb61d40a9e6e5cd8dd32ca75e12"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "()",
+          "grantRole(bytes32,address)",
+          "vote(uint256)",
+          "getRole(address)",
+          "changeVotingAllowed(bool)",
+          "votingResult()",
+          "changeResultStatus(bool)",
+          "addCandidates(string[])"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "Governance",
+            "src": "contracts/Governance.sol:94"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "votingAllowed",
+            "src": "contracts/Governance.sol:11"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "resultPublic",
+            "src": "contracts/Governance.sol:12"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "label": "votingAllowed",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Governance",
+              "src": "contracts/Governance.sol:11"
+            },
+            {
+              "label": "resultPublic",
+              "offset": 1,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Governance",
+              "src": "contracts/Governance.sol:12"
+            },
+            {
+              "label": "candidates",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_array(t_struct(candidate)39_storage)dyn_storage",
+              "contract": "Governance",
+              "src": "contracts/Governance.sol:32"
+            },
+            {
+              "label": "shareholderArray",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_array(t_address)dyn_storage",
+              "contract": "Governance",
+              "src": "contracts/Governance.sol:35"
+            },
+            {
+              "label": "shareholders",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_mapping(t_address,t_bytes32)",
+              "contract": "Governance",
+              "src": "contracts/Governance.sol:38"
+            },
+            {
+              "label": "voters",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_mapping(t_address,t_struct(voter)44_storage)",
+              "contract": "Governance",
+              "src": "contracts/Governance.sol:41"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_array(t_address)dyn_storage": {
+              "label": "address[]",
+              "numberOfBytes": "32"
+            },
+            "t_array(t_struct(candidate)39_storage)dyn_storage": {
+              "label": "struct Governance.candidate[]",
+              "numberOfBytes": "32"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_bytes32": {
+              "label": "bytes32",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_bytes32)": {
+              "label": "mapping(address => bytes32)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_struct(voter)44_storage)": {
+              "label": "mapping(address => struct Governance.voter)",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_struct(candidate)39_storage": {
+              "label": "struct Governance.candidate",
+              "members": [
+                {
+                  "label": "name",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "voteCount",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "1"
+                }
+              ],
+              "numberOfBytes": "64"
+            },
+            "t_struct(voter)44_storage": {
+              "label": "struct Governance.voter",
+              "members": [
+                {
+                  "label": "voted",
+                  "type": "t_bool",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "vote",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "1"
+                }
+              ],
+              "numberOfBytes": "64"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            }
+          },
+          "layoutVersion": "1.1",
+          "flat": true
+        }
+      }
+    },
+    {
+      "Governance": {
+        "src": "contracts/Governance.sol:4",
+        "version": {
+          "withMetadata": "7b53e2f04f5a165e40d7f6b5890802e8a713dcc54b8ce7d9da6d8a099ce2fef6",
+          "withoutMetadata": "c374598cb55631d058c0edc590a11929904c6fb61d40a9e6e5cd8dd32ca75e12",
+          "linkedWithoutMetadata": "c374598cb55631d058c0edc590a11929904c6fb61d40a9e6e5cd8dd32ca75e12"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "()",
+          "grantRole(bytes32,address)",
+          "vote(uint256)",
+          "getRole(address)",
+          "changeVotingAllowed(bool)",
+          "votingResult()",
+          "changeResultStatus(bool)",
+          "addCandidates(string[])"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "Governance",
+            "src": "contracts/Governance.sol:94"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "votingAllowed",
+            "src": "contracts/Governance.sol:11"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "resultPublic",
+            "src": "contracts/Governance.sol:12"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "label": "votingAllowed",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Governance",
+              "src": "contracts/Governance.sol:11"
+            },
+            {
+              "label": "resultPublic",
+              "offset": 1,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Governance",
+              "src": "contracts/Governance.sol:12"
+            },
+            {
+              "label": "candidates",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_array(t_struct(candidate)39_storage)dyn_storage",
+              "contract": "Governance",
+              "src": "contracts/Governance.sol:32"
+            },
+            {
+              "label": "shareholderArray",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_array(t_address)dyn_storage",
+              "contract": "Governance",
+              "src": "contracts/Governance.sol:35"
+            },
+            {
+              "label": "shareholders",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_mapping(t_address,t_bytes32)",
+              "contract": "Governance",
+              "src": "contracts/Governance.sol:38"
+            },
+            {
+              "label": "voters",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_mapping(t_address,t_struct(voter)44_storage)",
+              "contract": "Governance",
+              "src": "contracts/Governance.sol:41"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_array(t_address)dyn_storage": {
+              "label": "address[]",
+              "numberOfBytes": "32"
+            },
+            "t_array(t_struct(candidate)39_storage)dyn_storage": {
+              "label": "struct Governance.candidate[]",
+              "numberOfBytes": "32"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_bytes32": {
+              "label": "bytes32",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_bytes32)": {
+              "label": "mapping(address => bytes32)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_struct(voter)44_storage)": {
+              "label": "mapping(address => struct Governance.voter)",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_struct(candidate)39_storage": {
+              "label": "struct Governance.candidate",
+              "members": [
+                {
+                  "label": "name",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "voteCount",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "1"
+                }
+              ],
+              "numberOfBytes": "64"
+            },
+            "t_struct(voter)44_storage": {
+              "label": "struct Governance.voter",
+              "members": [
+                {
+                  "label": "voted",
+                  "type": "t_bool",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "vote",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "1"
+                }
+              ],
+              "numberOfBytes": "64"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            }
+          },
+          "layoutVersion": "1.1",
+          "flat": true
+        }
+      }
+    },
+    {
+      "Governance": {
+        "src": "contracts/Governance.sol:4",
+        "version": {
+          "withMetadata": "b8c8befc7439ff24286159ed89f0eee10ab41397326388139a036790ab22c340",
+          "withoutMetadata": "18e44151082f910cc634d78296e01ff9967fc3434de3816f58ee7b54e13adfb1",
+          "linkedWithoutMetadata": "18e44151082f910cc634d78296e01ff9967fc3434de3816f58ee7b54e13adfb1"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "()",
+          "grantRole(bytes32,address)",
+          "vote(uint256)",
+          "getRole(address)",
+          "changevotingAllowed(bool)",
+          "votingResult()",
+          "changeResultStatus(bool)",
+          "getWinner()"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "Governance",
+            "src": "contracts/Governance.sol:62"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "votingAllowed",
+            "src": "contracts/Governance.sol:10"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "resultPublic",
+            "src": "contracts/Governance.sol:11"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "label": "votingAllowed",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Governance",
+              "src": "contracts/Governance.sol:10"
+            },
+            {
+              "label": "resultPublic",
+              "offset": 1,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Governance",
+              "src": "contracts/Governance.sol:11"
+            },
+            {
+              "label": "candidates",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_array(t_struct(candidate)27_storage)dyn_storage",
+              "contract": "Governance",
+              "src": "contracts/Governance.sol:24"
+            },
+            {
+              "label": "shareholderArray",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_array(t_address)dyn_storage",
+              "contract": "Governance",
+              "src": "contracts/Governance.sol:25"
+            },
+            {
+              "label": "shareholders",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_mapping(t_address,t_bytes32)",
+              "contract": "Governance",
+              "src": "contracts/Governance.sol:27"
+            },
+            {
+              "label": "voters",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_mapping(t_address,t_struct(voter)32_storage)",
+              "contract": "Governance",
+              "src": "contracts/Governance.sol:28"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_array(t_address)dyn_storage": {
+              "label": "address[]",
+              "numberOfBytes": "32"
+            },
+            "t_array(t_struct(candidate)27_storage)dyn_storage": {
+              "label": "struct Governance.candidate[]",
+              "numberOfBytes": "32"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_bytes32": {
+              "label": "bytes32",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_bytes32)": {
+              "label": "mapping(address => bytes32)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_struct(voter)32_storage)": {
+              "label": "mapping(address => struct Governance.voter)",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_struct(candidate)27_storage": {
+              "label": "struct Governance.candidate",
+              "members": [
+                {
+                  "label": "name",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "voteCount",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "1"
+                }
+              ],
+              "numberOfBytes": "64"
+            },
+            "t_struct(voter)32_storage": {
+              "label": "struct Governance.voter",
+              "members": [
+                {
+                  "label": "voted",
+                  "type": "t_bool",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "vote",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "1"
+                }
+              ],
+              "numberOfBytes": "64"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            }
+          },
+          "layoutVersion": "1.1",
+          "flat": true
+        }
+      }
+    },
+    {
+      "Governance": {
+        "src": "contracts/Governance.sol:4",
+        "version": {
+          "withMetadata": "b8c8befc7439ff24286159ed89f0eee10ab41397326388139a036790ab22c340",
+          "withoutMetadata": "18e44151082f910cc634d78296e01ff9967fc3434de3816f58ee7b54e13adfb1",
+          "linkedWithoutMetadata": "18e44151082f910cc634d78296e01ff9967fc3434de3816f58ee7b54e13adfb1"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "()",
+          "grantRole(bytes32,address)",
+          "vote(uint256)",
+          "getRole(address)",
+          "changevotingAllowed(bool)",
+          "votingResult()",
+          "changeResultStatus(bool)",
+          "getWinner()"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "Governance",
+            "src": "contracts/Governance.sol:62"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "votingAllowed",
+            "src": "contracts/Governance.sol:10"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "resultPublic",
+            "src": "contracts/Governance.sol:11"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "label": "votingAllowed",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Governance",
+              "src": "contracts/Governance.sol:10"
+            },
+            {
+              "label": "resultPublic",
+              "offset": 1,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Governance",
+              "src": "contracts/Governance.sol:11"
+            },
+            {
+              "label": "candidates",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_array(t_struct(candidate)27_storage)dyn_storage",
+              "contract": "Governance",
+              "src": "contracts/Governance.sol:24"
+            },
+            {
+              "label": "shareholderArray",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_array(t_address)dyn_storage",
+              "contract": "Governance",
+              "src": "contracts/Governance.sol:25"
+            },
+            {
+              "label": "shareholders",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_mapping(t_address,t_bytes32)",
+              "contract": "Governance",
+              "src": "contracts/Governance.sol:27"
+            },
+            {
+              "label": "voters",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_mapping(t_address,t_struct(voter)32_storage)",
+              "contract": "Governance",
+              "src": "contracts/Governance.sol:28"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_array(t_address)dyn_storage": {
+              "label": "address[]",
+              "numberOfBytes": "32"
+            },
+            "t_array(t_struct(candidate)27_storage)dyn_storage": {
+              "label": "struct Governance.candidate[]",
+              "numberOfBytes": "32"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_bytes32": {
+              "label": "bytes32",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_bytes32)": {
+              "label": "mapping(address => bytes32)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_struct(voter)32_storage)": {
+              "label": "mapping(address => struct Governance.voter)",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_struct(candidate)27_storage": {
+              "label": "struct Governance.candidate",
+              "members": [
+                {
+                  "label": "name",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "voteCount",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "1"
+                }
+              ],
+              "numberOfBytes": "64"
+            },
+            "t_struct(voter)32_storage": {
+              "label": "struct Governance.voter",
+              "members": [
+                {
+                  "label": "voted",
+                  "type": "t_bool",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "vote",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "1"
+                }
+              ],
+              "numberOfBytes": "64"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            }
+          },
+          "layoutVersion": "1.1",
+          "flat": true
+        }
+      }
+    }
+  ]
+}
