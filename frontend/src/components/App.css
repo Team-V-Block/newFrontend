@@ -8,6 +8,10 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: #f4a261;
+}
+
 .container {
   font-family: "Overpass", sans-serif;
   font-size: 1.25rem;
