@@ -133,7 +133,7 @@ class Vote extends Component {
     if (!this.state.selectedAddress) {
       return (
         <button
-          className="btn-connect"
+          className="btn-connect btn"
           onClick={() => this.connectToMetamask()}
         >
           Connect to Metamask
