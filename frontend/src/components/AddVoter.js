@@ -1,23 +1,29 @@
+import "./AddVoter.css";
+
 const AddVoter = ({ newVoter, setNewVoter, addNewVoter, newVoterStatus }) => {
-	const handleNewVoter = (e) => {
-		setNewVoter(e.target.value);
-	};
-	return (
-		<div>
-			<h4>Give right to vote</h4>
-			<p>(only chairman can give vote right)</p>
-			<div
-				style={{
-					width: '15em',
-					display: 'flex',
-					justifyContent: 'space-between',
-				}}>
-				<input value={newVoter} onChange={handleNewVoter} />
-				<button onClick={addNewVoter}>Give right</button>
-			</div>
-			{newVoterStatus && <p>Status: {newVoterStatus}</p>}
-		</div>
-	);
+  const handleNewVoter = (e) => {
+    setNewVoter(e.target.value);
+  };
+  return (
+    <div className="container container-addVote form-container">
+      <h4 className="addVote-title title-sm">Give right to vote</h4>
+      <p className="addVote-body body-sm">
+        (only chairman can give vote right)
+      </p>
+      <div className="addVote-form">
+        <input
+          value={newVoter}
+          onChange={handleNewVoter}
+          className="addVote-input"
+          placeholder="input Address"
+        />
+        <button onClick={addNewVoter} className="btn addVote-btn">
+          Give right
+        </button>
+      </div>
+      {newVoterStatus && <p>Status: {newVoterStatus}</p>}
+    </div>
+  );
 };
 
 export default AddVoter;
